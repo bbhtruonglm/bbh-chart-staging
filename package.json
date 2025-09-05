@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --mode development",
     "prod": "vite --mode production",
-    "build": "pnpm run build:production",
+    "build": "tsc -b && vite build --mode production",
     "build:dev": "vite build --mode development",
     "zip": "zip -r build.zip dist",
     "build-retion": "VITE_BASE_URL=/statistic run-s build zip",
