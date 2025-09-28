@@ -8,7 +8,29 @@ interface ChartProps {
    * Dữ liệu categories của biểu đồ
    */
   categories_chart: any
+
+  /** type */
+  type?: string
 }
+
+type CHAT_TYPE =
+  | 'line'
+  | 'area'
+  | 'bar'
+  | 'pie'
+  | 'donut'
+  | 'radialBar'
+  | 'scatter'
+  | 'bubble'
+  | 'heatmap'
+  | 'candlestick'
+  | 'boxPlot'
+  | 'radar'
+  | 'polarArea'
+  | 'rangeBar'
+  | 'rangeArea'
+  | 'treemap'
+
 /**
  * Biểu đồ tùy chỉnh
  * @param series_chart
@@ -22,7 +44,11 @@ type CurveType =
   | 'linestep'
   | 'monotoneCubic'
 
-function ChartCustom({ series_chart, categories_chart }: ChartProps) {
+function ChartCustom({
+  series_chart,
+  categories_chart,
+  type = 'line',
+}: ChartProps) {
   /** Màu sắc cố định cho 18 phần đầu tiên */
   const FIXED_COLORS = [
     '#1D4ED8',
@@ -213,7 +239,7 @@ function ChartCustom({ series_chart, categories_chart }: ChartProps) {
     <Chart
       options={OPTIONS}
       series={series_chart}
-      type="line"
+      type={type as CHAT_TYPE}
       height="250px"
     />
   )

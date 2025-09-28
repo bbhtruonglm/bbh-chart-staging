@@ -1,4 +1,5 @@
 import { HOST, fetchFunction } from '@/api/fetchApi'
+import { extractJsonFromMarkdown, handleResponseData } from '@/utils'
 import { selectPageList, selectStaffList } from '@/stores/appSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useMemo, useState } from 'react'
@@ -118,13 +119,16 @@ export function useModal({ is_open, body, onClose }) {
     /** Xây dựng URL  đến trang chatbox */
     const PATH = `?page_id=${PAGE_ID}&user_id=${CLIENT_ID}`
 
-    /** Mở URL trong tab mới */
-    window.open(
-      CURRENT_URL?.includes(HOST['root']) || CURRENT_URL?.includes('localhost')
-        ? HOST_URL_RETION + PATH
-        : HOST_URL + PATH,
-      '_blank',
-    )
+    if (CLIENT_ID) {
+      /** Mở URL trong tab mới */
+      window.open(
+        CURRENT_URL?.includes(HOST['root']) ||
+          CURRENT_URL?.includes('localhost')
+          ? HOST_URL_RETION + PATH
+          : HOST_URL + PATH,
+        '_blank',
+      )
+    }
   }
 
   /**   Xử lý khi chuyển trang
@@ -154,16 +158,33 @@ export function useModal({ is_open, body, onClose }) {
      */
     return data_table.map(item => {
       /** Parse data */
-      const PARSED = JSON.parse(item.data || '{}')
+      const PARSED = JSON.parse(item?.data || '{}')
+
+      // const DATA = extractJsonFromMarkdown(
+      //   PARSED.candidates[0]?.content?.parts[0]?.text,
+      // )
+
+      console.log(PARSED, 'parsed')
 
       return {
         ...item,
         /** Parse trường `data` và thêm vào parsedText */
-        parsedText: PARSED.text,
+        parsedText:
+          PARSED?.candidates?.[0]?.content?.parts?.[0]?.text ??
+          PARSED?.response,
+        aiAsking: PARSED?.candidates?.[0]?.content?.parts?.[0]?.text
+          ? '-'
+          : PARSED?.text,
+        // parsedText: JSON.stringify(DATA),
         /** Parse trường `data` và thêm vào parsedText */
-        parsedClientName: PARSED.client_name,
+        parsedClientName: PARSED?.client_name,
         /** Parse trường `data` và thêm vào parsedText */
-        parsedMessageType: PARSED.message_type,
+        parsedMessageType: PARSED?.message_type,
+
+        totalTokenCount: PARSED?.usageMetadata?.totalTokenCount,
+        candidatesTokenCount: PARSED?.usageMetadata?.candidatesTokenCount || 0,
+        promptTokenCount: PARSED?.usageMetadata?.promptTokenCount || 0,
+        thoughtsTokenCount: PARSED?.usageMetadata?.thoughtsTokenCount || 0,
       }
     })
   }, [data_table])

@@ -286,5 +286,42 @@ export const ko = {
     _setting_desc: '표시할 열 구성',
     staff_desc: '상호작용한 페이지 직원 목록입니다.',
     search_column: '검색',
+    export_excel: 'Excel로 내보내기',
+    overview_analysis: '개요 분석',
+    page_analysis: '페이지 분석',
+    staff_analysis: '직원 분석',
+    ads_analysis: '광고 분석',
+    tag_analysis: '태그 분석',
+    conversation_list: '대화 목록',
+    exporting: '내보내는 중...',
+
+    staff_miss_call_in_hours: '근무 시간 내 지연 통화',
+    staff_miss_call_in_hours_desc:
+      '직원이 근무 시간 내에 고객에게 필요한 응답 시간보다 늦게 전화를 걸었습니다.',
+
+    staff_miss_call_out_hours: '근무 시간 외 지연 통화',
+    staff_miss_call_out_hours_desc:
+      '직원이 근무 시간 외에 고객에게 필요한 응답 시간보다 늦게 전화를 걸었습니다.',
+
+    staff_miss_response_in_hours: '근무 시간 내 지연 응답',
+    staff_miss_response_in_hours_desc:
+      '직원이 근무 시간 내에 고객의 메시지나 요청에 필요한 응답 시간보다 늦게 답변했습니다.',
+
+    staff_miss_response_out_hours: '근무 시간 외 지연 응답',
+    staff_miss_response_out_hours_desc:
+      '직원이 근무 시간 외에 고객의 메시지나 요청에 필요한 응답 시간보다 늦게 답변했습니다.',
+    'ai-analytic': 'AI 분석',
+    ai_prompt_video: '(AI) 사용된 비디오 프롬프트',
+    ai_prompt_video_desc:
+      '비디오 프롬프트는 AI가 영상 제작 또는 편집을 할 수 있도록 안내하는 데 사용됩니다 — 영상 소스, 애니메이션, 시각 효과부터 프레젠테이션 스타일까지.',
+    ai_prompt_sound: '(AI) 사용된 사운드 프롬프트',
+    ai_prompt_sound_desc:
+      '사운드 프롬프트는 AI가 오디오를 생성하거나 처리하도록 안내하는 데 사용됩니다 — 음성, 배경 음악, 효과음 또는 필요한 경우 오디오 변환 등.',
+    ai_prompt_image: '(AI) 사용된 이미지 프롬프트',
+    ai_prompt_image_desc:
+      '이미지 프롬프트는 AI가 이미지를 생성하거나 편집하도록 안내하는 데 사용됩니다 — 장면, 객체, 스타일, 색상 또는 기타 시각적 요소를 상세히 지정하여 적합한 이미지를 생성합니다.',
+    ai_prompt_text: '(AI) 사용된 텍스트 프롬프트',
+    ai_prompt_text_desc:
+      '텍스트 프롬프트는 AI가 글 콘텐츠를 생성하도록 안내하는 데 사용됩니다 — 기사, 스크립트, 답변, 설명, 대화 또는 기타 텍스트 등.',
   },
 }

@@ -13,36 +13,47 @@ import { useSelector } from 'react-redux'
 import { useTooltip } from '@/components/Tooltip/useTooltip'
 import { useTranslation } from 'react-i18next'
 
-/** Setup các field cho header của 1 bảng */
-export const useColumns = ({ is_open_modal }: { is_open_modal?: boolean }) => {
-  /**
-   * Sử dụng i18n
-   */
+export const useColumns = ({
+  is_open_modal = false,
+}: {
+  is_open_modal?: boolean
+}) => {
+  /** Hook i18n: dùng để dịch văn bản theo ngôn ngữ */
   const { t } = useTranslation()
-  /** Với mỗi bảng sẽ setup type, và các field khác nhau */
-  const COLUMN_HELPER = createColumnHelper<User | any>()
-  /**
-   * Xử lý khi resize
-   */
+
+  /** State kiểm tra thiết bị hiện tại có phải là mobile không (dựa theo width < 768) */
+  const [is_mobile, setIsMobile] = useState(window.innerWidth < 768)
+
+  /** Lấy filter thời gian từ Redux store */
+  const FILTER_TIME = useSelector(selectFilterTime)
+
+  /** Tính khoảng cách thời gian được filter (miliseconds) */
+  const DISTANCE_TIME = FILTER_TIME.end_time - FILTER_TIME.start_time
+
+  /** Định dạng thời gian dựa trên khoảng cách thời gian */
+  const FORMAT_TIME = getFormatDate(DISTANCE_TIME)
+
+  /** Kiểm tra page hiện tại có bao gồm trang Facebook hay không (từ Redux) */
+  const IS_PAGE_INCLUDES_FB = useSelector(selectIsPageIncludesFb)
+
+  /** State hiển thị modal cài đặt (setting) */
+  const [is_open_setting, setIsOpenSetting] = useState(false)
+
+  /** Lắng nghe thay đổi kích thước cửa sổ để cập nhật lại trạng thái is_mobile */
   useEffect(() => {
-    /**
-     *  Hàm xử lý khi resize
-     * @returns
-     */
     const handleResize = () => setIsMobile(window.innerWidth < 768)
-    /**
-     * Thêm sự kiện resize
-     */
+
+    /** Thêm sự kiện resize khi component được mount */
     window.addEventListener('resize', handleResize)
-    /**
-     * Xóa sự kiện resize
-     */
+
+    /** Cleanup: gỡ bỏ sự kiện khi component unmount */
     return () => window.removeEventListener('resize', handleResize)
   }, [])
+
   /**
    * Key dùng để lưu trữ danh sách các cột hiển thị vào localStorage
    */
-  const COLUMN_STORAGE_KEY = 'page_visible_columns'
+  const COLUMN_STORAGE_KEY = 'ai_visible_columns'
 
   /**
    * State chứa danh sách các key của cột đang hiển thị
@@ -69,17 +80,6 @@ export const useColumns = ({ is_open_modal }: { is_open_modal?: boolean }) => {
    */
   const [temp_visible_keys, setTempVisibleKeys] =
     useState<string[]>(visible_keys)
-  /**
-   * Lưu danh sách các cột tạm thời thành cột hiển thị chính thức
-   * - Thường được gọi khi người dùng nhấn nút "Lưu" trong modal
-   */
-  const saveVisibleColumns = () => {
-    /** Cập nhật state chính thức từ state tạm thời */
-    setVisibleKeys(temp_visible_keys)
-
-    /** Ghi lại cấu hình mới vào localStorage */
-    localStorage.setItem(COLUMN_STORAGE_KEY, JSON.stringify(temp_visible_keys))
-  }
 
   /**
    * Hook useEffect theo dõi sự thay đổi của visible_keys và is_open_modal
@@ -115,24 +115,7 @@ export const useColumns = ({ is_open_modal }: { is_open_modal?: boolean }) => {
     /** Cập nhật state tạm thời của cột hiển thị */
     setTempVisibleKeys(keys)
   }
-  /**
-   * State lưu trạng thái hiển thị mobile
-   */
-  const [is_mobile, setIsMobile] = useState(window.innerWidth < 768)
 
-  /** State hiển thị modal cài đặt (setting) */
-  const [is_open_setting, setIsOpenSetting] = useState(false)
-  /** thời gian lọc */
-  const FILTER_TIME = useSelector(selectFilterTime)
-
-  /** tính toán period */
-  const DISTANCE_TIME = FILTER_TIME.end_time - FILTER_TIME.start_time
-
-  /** kiểu định dạng ngày tháng trong bảng dựa theo kiểu lọc */
-  const FORMAT_TIME = getFormatDate(DISTANCE_TIME)
-
-  /** Danh sách ID trang chưa page fb */
-  const IS_PAGE_INCLUDES_FB = useSelector(selectIsPageIncludesFb)
   /**
    * Hook tooltip hỗ trợ hiển thị nội dung đầy đủ khi bị cắt (truncated)
    * - `tooltip`: JSX nội dung tooltip được render bên ngoài
@@ -141,6 +124,20 @@ export const useColumns = ({ is_open_modal }: { is_open_modal?: boolean }) => {
    */
   const { tooltip, handleMouseLeave, handleMouseEnterNoTruncated } =
     useTooltip()
+
+  /**
+   * Lưu danh sách các cột tạm thời thành cột hiển thị chính thức
+   * - Thường được gọi khi người dùng nhấn nút "Lưu" trong modal
+   */
+  const saveVisibleColumns = () => {
+    /** Cập nhật state chính thức từ state tạm thời */
+    setVisibleKeys(temp_visible_keys)
+
+    /** Ghi lại cấu hình mới vào localStorage */
+    localStorage.setItem(COLUMN_STORAGE_KEY, JSON.stringify(temp_visible_keys))
+  }
+  /** createColumnHelper */
+  const COLUMN_HELPER = createColumnHelper<User | any>()
   /** COLUMNS_SETTING */
   const COLUMNS_SETTING = useMemo(() => {
     return [
@@ -427,7 +424,6 @@ export const useColumns = ({ is_open_modal }: { is_open_modal?: boolean }) => {
         ),
         size: is_mobile ? 100 : 180,
       }),
-
       COLUMN_HELPER.accessor('staff_miss_call_in_hours', {
         meta: {
           label: t('staff_miss_call_in_hours_desc'),
@@ -561,6 +557,7 @@ export const useColumns = ({ is_open_modal }: { is_open_modal?: boolean }) => {
         meta: {
           label: t('_email_ai_detect'),
         },
+
         header: () => (
           <HeaderWithTooltip
             label={t('_email_ai_detect')}
@@ -661,7 +658,6 @@ export const useColumns = ({ is_open_modal }: { is_open_modal?: boolean }) => {
         meta: {
           label: t('_ad_reach'),
         },
-
         header: () => (
           <HeaderWithTooltip
             label={t('_ad_reach')}
@@ -742,6 +738,7 @@ export const useColumns = ({ is_open_modal }: { is_open_modal?: boolean }) => {
         meta: {
           label: t('_client_negative'),
         },
+
         header: () => (
           <HeaderWithTooltip
             label={t('_client_negative')}
@@ -759,6 +756,9 @@ export const useColumns = ({ is_open_modal }: { is_open_modal?: boolean }) => {
         size: is_mobile ? 150 : 280,
       }),
       COLUMN_HELPER.accessor('cta_schedule_ai_detect', {
+        meta: {
+          label: t('_schedule_ai_detect'),
+        },
         header: () => (
           <HeaderWithTooltip
             label={t('_schedule_ai_detect')}
@@ -842,6 +842,7 @@ export const useColumns = ({ is_open_modal }: { is_open_modal?: boolean }) => {
       accessorKey: col.accessorKey as any,
     }))
   }, [FORMAT_TIME, is_mobile, IS_PAGE_INCLUDES_FB])
+
   /**
    * useEffect để đồng bộ dữ liệu cột hiển thị từ localStorage
    * - Chạy khi `ALL_COLUMNS` thay đổi (ví dụ sau khi fetch dữ liệu cột từ backend)

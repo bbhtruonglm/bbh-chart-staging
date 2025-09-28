@@ -299,6 +299,7 @@ export const en = {
     _setting_desc: 'Configure visible columns',
     staff_desc: 'List of page staff who interact.',
     search_column: 'Search',
+
     export_excel: 'Export to Excel',
     overview_analysis: 'Overview Analysis',
     page_analysis: 'Page Analysis',
@@ -323,5 +324,18 @@ export const en = {
     staff_miss_response_out_hours: 'Delayed Response Outside Working Hours',
     staff_miss_response_out_hours_desc:
       'The staff responded to the customer’s message or request later than the required response time outside official working hours.',
+    'ai-analytic': 'AI Analytic',
+    ai_prompt_video: '(AI) video prompt used',
+    ai_prompt_video_desc:
+      'The video prompt is used to guide AI in creating or editing videos — from footage, animations, and visual effects to presentation styles.',
+    ai_prompt_sound: '(AI) sound prompt used',
+    ai_prompt_sound_desc:
+      'The sound prompt is used to guide AI in creating or processing audio — such as voice, background music, sound effects, or transforming audio as required.',
+    ai_prompt_image: '(AI) image prompt used',
+    ai_prompt_image_desc:
+      'The image prompt is used to guide AI in creating or editing images — detailing scenes, objects, styles, colors, or any visual elements for AI to generate suitable images.',
+    ai_prompt_text: '(AI) text prompt used',
+    ai_prompt_text_desc:
+      'The text prompt is used to guide AI in generating written content — such as articles, scripts, answers, descriptions, dialogues, or any other text on demand.',
   },
 }

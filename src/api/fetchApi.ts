@@ -11,7 +11,8 @@ export const HOST: { [index: string]: string } =
   /**
    * Lấy host từ biến môi trường
    */
-  API_HOST[import.meta.env.VITE_APP_ENV || 'development'] || ENV
+  // API_HOST[import.meta.env.VITE_APP_ENV || 'development'] ||
+  ENV
 
 /** đầu vào của api */
 interface InputRequestApi {

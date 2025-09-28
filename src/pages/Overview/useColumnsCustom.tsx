@@ -191,6 +191,110 @@ export const useColumnsCustom = ({
   /** ALL_COLUMNS */
   const ALL_COLUMNS: IProColumns<User | any> = useMemo(() => {
     const COLUMNS = [
+      COLUMN_HELPER.accessor('ai_prompt_text', {
+        meta: {
+          label: t('ai_prompt_text'),
+        },
+        header: () => (
+          <HeaderWithTooltip
+            label={t('ai_prompt_text')}
+            onHover={(e: any) =>
+              handleMouseEnterNoTruncated(e, t('ai_prompt_text_desc'))
+            }
+            onLeave={handleMouseLeave}
+          />
+        ),
+
+        cell: info => (
+          <div className="line-clamp-1">
+            {formatWithCommas(info.getValue()) ?? '-'}
+          </div>
+        ),
+        size: is_mobile ? 100 : 200,
+      }),
+      COLUMN_HELPER.accessor('ai_prompt_image', {
+        meta: {
+          label: t('ai_prompt_image'),
+        },
+        header: () => (
+          <HeaderWithTooltip
+            label={t('ai_prompt_image')}
+            onHover={(e: any) =>
+              handleMouseEnterNoTruncated(e, t('ai_prompt_image_desc'))
+            }
+            onLeave={handleMouseLeave}
+          />
+        ),
+
+        cell: info => (
+          <div className="line-clamp-1">
+            {formatWithCommas(info.getValue()) ?? '-'}
+          </div>
+        ),
+        size: is_mobile ? 100 : 220,
+      }),
+      COLUMN_HELPER.accessor('ai_prompt_sound', {
+        meta: {
+          label: t('ai_prompt_sound'),
+        },
+        header: () => (
+          <HeaderWithTooltip
+            label={t('ai_prompt_sound')}
+            onHover={(e: any) =>
+              handleMouseEnterNoTruncated(e, t('ai_prompt_sound_desc'))
+            }
+            onLeave={handleMouseLeave}
+          />
+        ),
+
+        cell: info => (
+          <div className="line-clamp-1">
+            {formatWithCommas(info.getValue()) ?? '-'}
+          </div>
+        ),
+        size: is_mobile ? 100 : 220,
+      }),
+      COLUMN_HELPER.accessor('ai_prompt_video', {
+        meta: {
+          label: t('ai_prompt_video'),
+        },
+        header: () => (
+          <HeaderWithTooltip
+            label={t('ai_prompt_video')}
+            onHover={(e: any) =>
+              handleMouseEnterNoTruncated(e, t('ai_prompt_video_desc'))
+            }
+            onLeave={handleMouseLeave}
+          />
+        ),
+
+        cell: info => (
+          <div className="line-clamp-1">
+            {formatWithCommas(info.getValue()) ?? '-'}
+          </div>
+        ),
+        size: is_mobile ? 100 : 220,
+      }),
+      COLUMN_HELPER.accessor('flow_active', {
+        meta: {
+          label: t('_flow_active'),
+        },
+        header: () => (
+          <HeaderWithTooltip
+            label={t('_flow_active')}
+            onHover={(e: any) =>
+              handleMouseEnterNoTruncated(e, t('_flow_active_desc'))
+            }
+            onLeave={handleMouseLeave}
+          />
+        ),
+        cell: info => (
+          <div className="line-clamp-1">
+            {formatWithCommas(info.getValue()) ?? '-'}
+          </div>
+        ),
+        size: is_mobile ? 100 : 150,
+      }),
       IS_PAGE_INCLUDES_FB &&
         COLUMN_HELPER.accessor('comment_client', {
           meta: {
@@ -730,26 +834,6 @@ export const useColumnsCustom = ({
           </div>
         ),
         size: is_mobile ? 100 : 180,
-      }),
-      COLUMN_HELPER.accessor('flow_active', {
-        meta: {
-          label: t('_flow_active'),
-        },
-        header: () => (
-          <HeaderWithTooltip
-            label={t('_flow_active')}
-            onHover={(e: any) =>
-              handleMouseEnterNoTruncated(e, t('_flow_active_desc'))
-            }
-            onLeave={handleMouseLeave}
-          />
-        ),
-        cell: info => (
-          <div className="line-clamp-1">
-            {formatWithCommas(info.getValue()) ?? '-'}
-          </div>
-        ),
-        size: is_mobile ? 100 : 150,
       }),
     ].filter(Boolean)
 

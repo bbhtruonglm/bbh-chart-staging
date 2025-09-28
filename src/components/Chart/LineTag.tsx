@@ -3,15 +3,20 @@ import {
   ChatBubbleLeftIcon,
   ChatBubbleOvalLeftEllipsisIcon,
   ChatBubbleOvalLeftIcon,
+  DocumentDuplicateIcon,
+  DocumentTextIcon,
   FaceFrownIcon,
   FaceSmileIcon,
   PhoneArrowUpRightIcon,
   PhoneIcon,
   PhoneXMarkIcon,
+  PhotoIcon,
+  SpeakerWaveIcon,
   SwatchIcon,
   TagIcon,
   UserCircleIcon,
   UserPlusIcon,
+  VideoCameraIcon,
 } from '@heroicons/react/24/solid'
 
 import { ChatIcon } from '@/assets/icons/ChatIcon'
@@ -94,6 +99,21 @@ export const LineTag = ({
         )}
         {type === 'staff_miss_response_out_hours' && (
           <ChatBubbleOvalLeftIcon className="size-5 text-blue-700" />
+        )}
+        {type === 'ai_prompt_text' && (
+          <DocumentTextIcon className="size-5 text-blue-700" />
+        )}
+        {type === 'ai_prompt_image' && (
+          <PhotoIcon className="size-5 text-blue-700" />
+        )}
+        {type === 'ai_prompt_sound' && (
+          <SpeakerWaveIcon className="size-5 text-blue-700" />
+        )}
+        {type === 'ai_prompt_video' && (
+          <VideoCameraIcon className="size-5 text-blue-700" />
+        )}
+        {type === 'flow_active' && (
+          <DocumentDuplicateIcon className="size-5 text-blue-700" />
         )}
       </div>
       <div className="w-full">

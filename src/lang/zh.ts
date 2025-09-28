@@ -282,5 +282,42 @@ export const zh = {
     _setting_desc: '配置可见列',
     staff_desc: '页面互动员工列表。',
     search_column: '搜索',
+    export_excel: '导出到Excel',
+    overview_analysis: '概览分析',
+    page_analysis: '页面分析',
+    staff_analysis: '员工分析',
+    ads_analysis: '广告分析',
+    tag_analysis: '标签分析',
+    conversation_list: '会话列表',
+    exporting: '正在导出...',
+
+    staff_miss_call_in_hours: '工作时间内延迟回电',
+    staff_miss_call_in_hours_desc:
+      '员工在正式工作时间内晚于要求的响应时间才回拨客户电话。',
+
+    staff_miss_call_out_hours: '工作时间外延迟回电',
+    staff_miss_call_out_hours_desc:
+      '员工在正式工作时间外晚于要求的响应时间才回拨客户电话。',
+
+    staff_miss_response_in_hours: '工作时间内延迟回复',
+    staff_miss_response_in_hours_desc:
+      '员工在正式工作时间内晚于要求的响应时间才回复客户的消息或请求。',
+
+    staff_miss_response_out_hours: '工作时间外延迟回复',
+    staff_miss_response_out_hours_desc:
+      '员工在正式工作时间外晚于要求的响应时间才回复客户的消息或请求。',
+    'ai-analytic': 'AI分析',
+    ai_prompt_video: '(AI) 已使用的视频提示',
+    ai_prompt_video_desc:
+      '视频提示用于指导AI创建或编辑视频 — 从视频素材、动画、视觉效果到演示风格。',
+    ai_prompt_sound: '(AI) 已使用的音频提示',
+    ai_prompt_sound_desc:
+      '音频提示用于指导AI创建或处理音频 — 如语音、背景音乐、音效或按需转换音频。',
+    ai_prompt_image: '(AI) 已使用的图像提示',
+    ai_prompt_image_desc:
+      '图像提示用于指导AI创建或编辑图像 — 详细描述场景、对象、风格、颜色或任何视觉元素，以生成合适的图像。',
+    ai_prompt_text: '(AI) 已使用的文本提示',
+    ai_prompt_text_desc:
+      '文本提示用于指导AI生成文字内容 — 如文章、脚本、回答、描述、对话或任何其他所需文本。',
   },
 }

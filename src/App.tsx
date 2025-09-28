@@ -22,6 +22,7 @@ import {
 } from '@/stores/appSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
+import AIAnalyticScreen from './pages/AIAnalytic/AIAnalyticScreen'
 import { API_HOST } from './services/env'
 import FilterBar from '@/components/FilterBar/FilterBar'
 import GlobalLoadingIndicator from './components/LoadingIndicator/GlobalLoadingIndicator'
@@ -329,6 +330,10 @@ function App() {
                     <Route
                       path={renderRoutes(`/dashboard`)}
                       element={<OverviewScreen />}
+                    />
+                    <Route
+                      path={renderRoutes(`/ai-analytic`)}
+                      element={<AIAnalyticScreen />}
                     />
                     <Route
                       path={renderRoutes(`/page`)}

@@ -188,6 +188,22 @@ export const renderTag = key => TAG_MAP[key] || 'Không xác định'
 export const renderConversationTag = key => {
   return t(key)
 }
+/** Render conversation tag */
+export const renderConversationType = key => {
+  switch (key) {
+    case 'ai_prompt_text':
+      return 'Văn bản'
+    case 'ai_prompt_image':
+      return 'Hình ảnh'
+    case 'ai_prompt_sound':
+      return 'Âm thanh'
+    case 'ai_prompt_video':
+      return 'Video'
+
+    default:
+      return key
+  }
+}
 /** Path map */
 const PATH_MAP = {
   '/dashboard': 'overview',
@@ -471,4 +487,50 @@ export const aggregateStaffData = (data: AllStaffData): Summary => {
       staff_miss_response_out_hours: 0,
     } as Summary,
   )
+}
+type ResponseData = {
+  language: string
+  response_style: string
+  response_message: string
+}
+
+export function handleResponseData(data: any): ResponseData | null {
+  if (
+    typeof data.language === 'string' &&
+    typeof data.response_style === 'string' &&
+    typeof data.response_message === 'string'
+  ) {
+    return data as ResponseData
+  }
+  console.error('Dữ liệu không hợp lệ')
+  return null
+}
+
+/**
+ * Lấy JSON object từ markdown code block
+ */
+export function extractJsonFromMarkdown(markdown: string): any | null {
+  try {
+    // xóa 3 dấu ``` và nhãn json
+    const cleaned = markdown
+      .replace(/```json/i, '') // bỏ ```json
+      .replace(/```/g, '') // bỏ ```
+      .trim()
+    // parse thành object
+    return JSON.parse(cleaned)
+  } catch (err) {
+    console.error('Không parse được JSON:', err)
+    return null
+  }
+}
+/**
+ * format số thành dạng hiển thị tiền tệ
+ * vd: 10000000 -> 10.000.000
+ */
+export const currency = (input?: number) => {
+  if (!input) return ''
+
+  let result = new Intl.NumberFormat('vi').format(input)
+
+  return _.isNaN(result) ? '' : result
 }

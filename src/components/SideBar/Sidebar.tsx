@@ -19,6 +19,11 @@ function Sidebar({ onClose }: { onClose: () => void }) {
       icon: 'Overview',
     },
     {
+      title: t('ai-analytic'),
+      path: 'ai-analytic',
+      icon: 'AIAnalytic',
+    },
+    {
       title: t('page'),
       path: 'page',
       icon: 'Page',
@@ -28,11 +33,6 @@ function Sidebar({ onClose }: { onClose: () => void }) {
       path: 'staff',
       icon: 'Staff',
     },
-    // {
-    //   title:t('online'),
-    //   path: '/online',
-    //   icon: 'Online',
-    // },
     {
       title: t('ads'),
       path: 'ads',

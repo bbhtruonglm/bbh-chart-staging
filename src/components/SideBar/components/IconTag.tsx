@@ -2,6 +2,7 @@ import {
   ChartBarIcon,
   FireIcon,
   MegaphoneIcon,
+  SparklesIcon,
   TagIcon,
   UsersIcon,
   WindowIcon,
@@ -66,6 +67,7 @@ function IconTag({ title, path, icon, onClose }: IconTagProps) {
         {icon === 'ADS' && <MegaphoneIcon className="size-5" />}
         {icon === 'Tags' && <TagIcon className="size-5" />}
         {icon === 'Emotional' && <FireIcon className="size-5" />}
+        {icon === 'AIAnalytic' && <SparklesIcon className="size-5" />}
       </div>
       <div>
         <h4 className="text-black text-sm font-medium hover:text-black">

@@ -320,5 +320,22 @@ export const vn = {
     staff_miss_response_out_hours: 'Chậm phản hồi ngoài giờ làm việc',
     staff_miss_response_out_hours_desc:
       'Nhân viên phản hồi tin nhắn hoặc yêu cầu của khách hàng chậm hơn so với quy định ngoài giờ hành chính.',
+    'ai-analytic': 'Thống kê AI',
+    ai_prompt_video: '(AI) prompt video đã sử dụng',
+    ai_prompt_video_desc:
+      'Prompt video (video) được sử dụng để hướng dẫn AI tạo hoặc chỉnh sửa video — từ cảnh quay, hoạt cảnh, hiệu ứng hình ảnh cho đến phong cách trình chiếu.',
+    ai_prompt_sound: '(AI) prompt sound đã sử dụng',
+    ai_prompt_sound_desc:
+      'Prompt âm thanh (sound) được sử dụng để hướng dẫn AI tạo hoặc xử lý âm thanh — ví dụ như giọng nói, nhạc nền, hiệu ứng âm thanh, hoặc chuyển đổi âm thanh theo yêu cầu.',
+    ai_prompt_image: '(AI) prompt image đã sử dụng',
+    ai_prompt_image_desc:
+      'Prompt hình ảnh (image) được sử dụng để hướng dẫn AI tạo hoặc chỉnh sửa hình ảnh — mô tả chi tiết cảnh, đối tượng, phong cách, màu sắc, hoặc bất kỳ yếu tố trực quan nào để AI sinh ảnh phù hợp.',
+    ai_prompt_text: '(AI) prompt text đã sử dụng',
+    ai_prompt_text_desc:
+      'Prompt văn bản (text) được sử dụng để hướng dẫn AI tạo ra nội dung chữ — như bài viết, kịch bản, câu trả lời, mô tả, đoạn hội thoại, hoặc bất kỳ văn bản nào theo yêu cầu.',
+    ai_type: 'Loại AI',
+    totalTokenCount: 'Tổng số token',
+    ai_translate: 'AI - Dịch',
+    ai_asking_question: 'Câu hỏi',
   },
 }

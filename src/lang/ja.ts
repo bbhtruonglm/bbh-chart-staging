@@ -288,5 +288,43 @@ export const ja = {
     _setting_desc: '表示列を設定',
     staff_desc: 'やり取りしたページスタッフの一覧。',
     search_column: '検索',
+
+    export_excel: 'Excelにエクスポート',
+    overview_analysis: '概要分析',
+    page_analysis: 'ページ分析',
+    staff_analysis: 'スタッフ分析',
+    ads_analysis: '広告分析',
+    tag_analysis: 'タグ分析',
+    conversation_list: '会話リスト',
+    exporting: 'エクスポート中...',
+
+    staff_miss_call_in_hours: '営業時間内の遅延コール',
+    staff_miss_call_in_hours_desc:
+      'スタッフがお客様に営業時間内で必要な応答時間より遅く折り返し電話をしました。',
+
+    staff_miss_call_out_hours: '営業時間外の遅延コール',
+    staff_miss_call_out_hours_desc:
+      'スタッフがお客様に営業時間外で必要な応答時間より遅く折り返し電話をしました。',
+
+    staff_miss_response_in_hours: '営業時間内の遅延応答',
+    staff_miss_response_in_hours_desc:
+      'スタッフがお客様のメッセージやリクエストに営業時間内で必要な応答時間より遅く返答しました。',
+
+    staff_miss_response_out_hours: '営業時間外の遅延応答',
+    staff_miss_response_out_hours_desc:
+      'スタッフがお客様のメッセージやリクエストに営業時間外で必要な応答時間より遅く返答しました。',
+    'ai-analytic': 'AI分析',
+    ai_prompt_video: '(AI) 使用されたビデオプロンプト',
+    ai_prompt_video_desc:
+      'ビデオプロンプトは、AIが映像を作成または編集するために使用されます — 映像素材、アニメーション、視覚効果からプレゼンテーションスタイルまで。',
+    ai_prompt_sound: '(AI) 使用されたサウンドプロンプト',
+    ai_prompt_sound_desc:
+      'サウンドプロンプトは、AIが音声を作成または処理するために使用されます — 音声、BGM、効果音、または必要に応じて音声を変換するなど。',
+    ai_prompt_image: '(AI) 使用されたイメージプロンプト',
+    ai_prompt_image_desc:
+      'イメージプロンプトは、AIが画像を作成または編集するために使用されます — シーン、オブジェクト、スタイル、色、その他視覚要素を詳細に指定して、適切な画像を生成します。',
+    ai_prompt_text: '(AI) 使用されたテキストプロンプト',
+    ai_prompt_text_desc:
+      'テキストプロンプトは、AIが文章コンテンツを生成するために使用されます — 記事、スクリプト、回答、説明、会話、その他の文章など。',
   },
 }
