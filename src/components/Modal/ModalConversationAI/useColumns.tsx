@@ -191,7 +191,7 @@ export const useColumns = ({ modal_type, getNamePage, handleClick }) => {
           cell: info => (
             <div className="flex flex-col gap-1">
               {currency(info.getValue())}
-              <div className="flex flex-col text-xs text-slate-500">
+              {/* <div className="flex flex-col text-xs text-slate-500">
                 <span>
                   • Candidates: {info?.row?.original?.candidatesTokenCount}
                 </span>
@@ -199,7 +199,7 @@ export const useColumns = ({ modal_type, getNamePage, handleClick }) => {
                 <span>
                   • Thought: {info?.row?.original?.thoughtsTokenCount}
                 </span>
-              </div>
+              </div> */}
             </div>
           ),
           size: 120,

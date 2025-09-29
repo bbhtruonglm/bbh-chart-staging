@@ -334,7 +334,7 @@ export const vn = {
     ai_prompt_text_desc:
       'Prompt văn bản (text) được sử dụng để hướng dẫn AI tạo ra nội dung chữ — như bài viết, kịch bản, câu trả lời, mô tả, đoạn hội thoại, hoặc bất kỳ văn bản nào theo yêu cầu.',
     ai_type: 'Loại AI',
-    totalTokenCount: 'Tổng số token',
+    totalTokenCount: 'Tổng số ký tự',
     ai_translate: 'AI - Dịch',
     ai_asking_question: 'Câu hỏi',
   },

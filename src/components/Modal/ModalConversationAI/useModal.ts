@@ -181,7 +181,7 @@ export function useModal({ is_open, body, onClose }) {
         /** Parse trường `data` và thêm vào parsedText */
         parsedMessageType: PARSED?.message_type,
 
-        totalTokenCount: PARSED?.usageMetadata?.totalTokenCount,
+        totalTokenCount: item?.value,
         candidatesTokenCount: PARSED?.usageMetadata?.candidatesTokenCount || 0,
         promptTokenCount: PARSED?.usageMetadata?.promptTokenCount || 0,
         thoughtsTokenCount: PARSED?.usageMetadata?.thoughtsTokenCount || 0,
